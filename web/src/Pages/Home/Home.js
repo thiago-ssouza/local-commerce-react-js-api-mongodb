@@ -1,15 +1,25 @@
-import React from "react";
-import logo from '../../assets/local-commerce-logo.png'
+import React, {useState} from "react";
+import Navbar from '../../Components/Navbar/Navbar'
+import Card from '../../Components/Card/Card'
+import Modal from '../../Components/Modal/Modal'
+
+// import {Link} from 'react-router-dom'
 
 function Home(){
+
+    const [isModalOpen, setModalOpen] = useState(false)
+
+    function openModal(){
+        setModalOpen(true)
+    }
+
+    function closeModal(){
+        setModalOpen(false)
+    }
+
     return (
         <div>
-            <nav>
-                <div className="nav-container">
-                    <img src={logo} alt="Local commerce logo"/>
-                    <button>LOGIN</button>
-                </div>
-            </nav>
+            <Navbar openModal={openModal}/>
 
             <section className="input-section">
                 <form action="">
@@ -24,22 +34,15 @@ function Home(){
 
             <section className="products-section">
                 <div className="products-container">
-                    <div className="card">
-                        <h2>Gourmet Sandwich</h2>
-                        <h1>$ 5,00</h1>
-                        <div className="card-info">
-                            <div className="card-indo-details">
-                                {/*<img src="" alt=""/>*/}
-                                <p>Montreal Sandwiches</p>
-                            </div>
-                            <div className="card-indo-details">
-                                {/*<img src="" alt=""/>*/}
-                                <p>+1 743 849 375</p>
-                            </div>
-                        </div>
-                    </div>
+                    <Card/>
+                    <Card/>
+                    <Card/>
                 </div>
             </section>
+
+            {/*Conditional rendering*/}
+            {isModalOpen ? <Modal closeModal={closeModal}/> : null}
+
         </div>
     )
 }
