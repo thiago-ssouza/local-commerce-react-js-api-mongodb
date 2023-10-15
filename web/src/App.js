@@ -1,10 +1,13 @@
 import React from 'react'
 import RoutesPages from './Routes/Routes'
 import  './Styles/main.scss'
+import { UserProvider } from './Context/UserContext'
 
 function App() {
   return (
-    <RoutesPages/>
+    <UserProvider>
+      <RoutesPages/>
+    </UserProvider>
   );
 }
 
