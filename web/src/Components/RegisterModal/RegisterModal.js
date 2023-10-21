@@ -30,7 +30,11 @@ function RegisterModal({setLoginForm}){
 
             })
 
-            alert('User successfully registered!')
+            alert('User successfully registered! You can access your account')
+            setName('')
+            setPhone('')
+            setEmail('')
+            setPassword('')
 
         }catch (err){
             alert('User register failed. Try again later')
