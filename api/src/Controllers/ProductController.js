@@ -15,23 +15,29 @@ module.exports = {
             return res.status(400).send({message: 'Unauthorized'})
         }
 
+        const randomNumberSortOrder = Math.floor((Math.random() * 1000) + 1)
+
         try {
             const  userInfo = await User.findById(user_id)
 
             const  {location} = userInfo
-            const latitude = location.coordinates[0]
-            const longitude = location.coordinates[1]
+            // const latitude = location.coordinates[0]
+            // const longitude = location.coordinates[1]
+            const longitude = location.coordinates[0]
+            const latitude = location.coordinates[1]
 
             const setLocation = {
                 type: 'Point',
-                coordinates: [latitude, longitude]
+                // coordinates: [latitude, longitude]
+                coordinates: [longitude, latitude]
             }
 
             const createdProduct = await Product.create({
                 name,
                 price,
                 user: user_id,
-                location: setLocation
+                location: setLocation,
+                order: randomNumberSortOrder
             })
 
             ///TODO Use the lates id. Do not use  it is not populating. execPopulate was removed. Need to find another way to do it
@@ -87,9 +93,13 @@ module.exports = {
     },
 
     async indexAll (req, res){
-        const {latitude, longitude } = req.query
+        // const {latitude, longitude } = req.query
+        const {longitude, latitude } = req.query
 
-        const maxDistance = 5000
+        // const maxDistance = 3800000
+        const maxDistance = 30000
+
+        // const { maxDistance } = req.query
 
         try {
             const  allProducts = await Product.find({
@@ -97,12 +107,14 @@ module.exports = {
                         $near: {
                             $geometry: {
                                 type: 'Point',
-                                coordinates: [latitude, longitude]
+                                // coordinates: [latitude, longitude]
+                                coordinates: [longitude, latitude]
                             },
                             $maxDistance: maxDistance
                         }
                     }
-            }).populate('user')
+            }).populate('user').sort('order')
+            //}).populate('user').limit(3).sort('order')
 
             return res.status(200).send(allProducts)
         }catch (err) {

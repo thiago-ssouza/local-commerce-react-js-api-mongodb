@@ -45,7 +45,7 @@ function Dashboard(){
                 }
             })
             const { data } = userProductsData
-            console.log(data)
+            //console.log(data)
             setProductsData(data)
             // console.log(userProductsData)
             // alert(userProductsData.data)
@@ -86,7 +86,7 @@ function Dashboard(){
                         <input
                             type="number"
                             min="0"
-                            placeholder="Product price"
+                            placeholder="Product price ($)"
                             value={productPrice}
                             onChange={e=>setProductPrice(Number(e.target.value))}
                         />
