@@ -11,6 +11,7 @@ export function UserProvider(props){
         isLogged: false,
         email: '',
         name: '',
+        _id: '',
     })
 
     return (

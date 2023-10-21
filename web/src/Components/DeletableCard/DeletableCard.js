@@ -1,20 +1,22 @@
 import React from "react";
-function DeletableCard(){
+function DeletableCard({productName, price, userName, userPhone, deleteProductHandler}){
 
     return (
         <div className="card">
-            <button>Remove</button>
+            <button onClick={deleteProductHandler}>Remove</button>
 
-            <h2>Gourmet Sandwich</h2>
-            <h1>$ 5,00</h1>
+            <h2>{ productName }</h2>
+            <h1>$ { price }</h1>
             <div className="card-info">
                 <div className="card-indo-details">
                     {/*<img src="" alt=""/>*/}
-                    <p>Montreal Sandwiches</p>
+                    {/*<p>Montreal Sandwiches</p>*/}
+                    <p> {userName}</p>
                 </div>
                 <div className="card-indo-details">
                     {/*<img src="" alt=""/>*/}
-                    <p>+1 743 849 375</p>
+                    {/*<p>+1 743 849 375</p>*/}
+                    <p>{ userPhone }</p>
                 </div>
             </div>
         </div>

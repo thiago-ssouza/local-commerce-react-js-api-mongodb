@@ -27,7 +27,8 @@ function LoginModal({setRegisterForm}){
                 ...prevState,
                 isLogged: true,
                 email: userInfo.email,
-                name: userInfo.name
+                name: userInfo.name,
+                _id: userInfo._id
             }))
 
             navigate('/dashboard')
