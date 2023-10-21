@@ -14,7 +14,8 @@ function Navbar({openModal}){
             ...prevState,
             isLogged: false,
             email: '',
-            name: ''
+            name: '',
+            _id: '',
         }))
     }
 
@@ -23,7 +24,14 @@ function Navbar({openModal}){
             <nav>
                 <div className="nav-container">
                     <img src={logo} alt="Local commerce logo"/>
-                    {userData.isLogged ? <button onClick={logoutHandler}>SIGN OUT</button> : <button onClick={openModal}>LOGIN</button>}
+                    {/*{userData.isLogged ? <p>Hello, {userData.name}</p> : null}*/}
+
+                    {userData.isLogged ?
+                        <>
+                        <h2>Hello, {userData.name}</h2>
+                        <button onClick={logoutHandler}>SIGN OUT</button>
+                        </> :
+                        <button onClick={openModal}>LOGIN</button>}
 
                 </div>
             </nav>

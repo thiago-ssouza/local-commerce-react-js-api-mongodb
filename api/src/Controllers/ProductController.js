@@ -78,7 +78,7 @@ module.exports = {
         try {
             const allProductsOfAnUser = await Product.find({
                 user: user_id
-            })
+            }).populate('user')
 
             return res.status(200).send(allProductsOfAnUser)
         }catch (err) {
