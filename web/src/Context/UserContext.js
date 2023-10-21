@@ -9,7 +9,8 @@ export function UserProvider(props){
 
     const [userData, setUserData] = useState({
         isLogged: false,
-        message: 'Olá',
+        email: '',
+        name: '',
     })
 
     return (
