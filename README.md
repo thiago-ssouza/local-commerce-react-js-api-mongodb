@@ -10,13 +10,23 @@ Content:
 <br/>
 - WebStorm 2023
 <br/>
+- Visual Studio Code
+<br/>
 - React js
+<br/>
+- Node js
 <br/>
 - JavaScript
 <br/>
 - API Implementation
 <br/>
 - MongoDB
+<br/>
+- Insomnia REST
+<br/>
+- Mongose
+<br/>
+- axios
 <br/>
 - CSS3
 <br/>
